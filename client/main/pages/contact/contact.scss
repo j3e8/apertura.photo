@@ -1,0 +1,53 @@
+.contact-page {
+  #contact-photo {
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/contact/phone-contact.jpg);
+  }
+  #contact-content {
+    flex: 0 0 60%;
+    -webkit-flex: 0 0 60%;
+    -moz-flex: 0 0 60%;
+    -ms-flex: 0 0 60%;
+  }
+  @media screen and (max-width: 800px) {
+    #contact-photo {
+      background: none;
+      display: none;
+    }
+    #contact-content {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+  }
+  main {
+    height: calc(100% - 90px);
+  }
+
+  h1 {
+    margin-top: 60px;
+  }
+
+  .content-container {
+    color: #595050;
+    width: calc(100% - 250px);
+    margin: 30px auto;
+  }
+  @media screen and (max-width: 480px) {
+    .content-container {
+      width: calc(100% - 30px);
+    }  
+  }
+
+  .label {
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .address {
+    color: #595050;
+  }
+}

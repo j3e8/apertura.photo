@@ -1,0 +1,176 @@
+.signup-page {
+  #signup-photo {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/signup/signup-family.jpg);
+  }
+  @media screen and (max-width: 800px) {
+    #signup-photo {
+      display: none;
+    }
+  }
+
+  main {
+    height: calc(100% - 90px);
+  }
+
+  h1 {
+    margin-top: 60px;
+  }
+
+  .content-container {
+    color: #595050;
+    width: calc(100% - 190px);
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+  #apps {
+    padding-top: 140px;
+  }
+  @media screen and (max-width: 800px) {
+    #apps {
+      padding-top: 0;
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .content-container {
+      width: calc(100% - 30px);
+    }
+    #apps {
+      display: none;
+    }
+  }
+
+  .form-content {
+    flex: 0 0 60%;
+    -webkit-flex: 0 0 60%;
+    -moz-flex: 0 0 60%;
+    -ms-flex: 0 0 60%;
+  }
+  @media screen and (max-width: 800px) {
+    .form-content {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+    #card-number-cell {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+  }
+
+  form {
+    height: 100%;
+  }
+
+  .label {
+    color: #fff;
+    font-weight: 400;
+  }
+
+  .address {
+    color: #595050;
+  }
+
+  label {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    margin: 6px 0 2px 0;
+    text-transform: none;
+  }
+
+
+  input.ng-invalid.ng-dirty,
+  input.invalid {
+    border: 1px solid #ff4a88;
+  }
+
+  #form2 {
+    height: 100%;
+    overflow-y: scroll;
+  }
+  .form {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .form.half {
+    width: 350px;
+    margin-left: -175px;
+    left: 50%;
+    top: 0;
+  }
+  .form.onscreen {
+    top: 0;
+  }
+  .form.offscreen {
+    top: 100%;
+  }
+  .form.show#form2 {
+    animation: slide-in-from-bottom 1s ease;
+    -webkit-animation: slide-in-from-bottom 1s ease;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
+  .form.hide#form1 {
+    animation: slide-out-to-top 1s ease;
+    -webkit-animation: slide-out-to-top 1s ease;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  @keyframes slide-in-from-bottom {
+    from { top: 100%; }
+    to { top: 0; }
+  }
+  @keyframes slide-out-to-top {
+    from { top: 0; }
+    to { top: -100%; }
+  }
+  @-webkit-keyframes slide-in-from-bottom {
+    from { top: 100%; }
+    to { top: 0; }
+  }
+  @-webkit-keyframes slide-out-to-top {
+    from { top: 0; }
+    to { top: -100%; }
+  }
+
+
+  .inline {
+    display: inline-block;
+  }
+
+  .price {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  @media screen and (max-width: 800px) {
+    .price {
+      margin-left: 8px;
+    }
+  }
+
+  .product-details {
+    margin-top: 20px;
+  }
+
+  #form1::-webkit-scrollbar { 
+    display: none; 
+  }
+  #form2::-webkit-scrollbar { 
+    display: none; 
+  }
+}

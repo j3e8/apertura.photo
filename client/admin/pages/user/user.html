@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <title>Apertura Users</title>
+      <!-- BEGIN standard dependencies -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+      <script type="text/javascript" src="bundle.js"></script>
+      <link type="text/css" rel="stylesheet" href="bundle.css" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/view/images/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="/view/images/favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/view/images/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/view/images/favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="/view/images/favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-78679351-2', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- END standard dependencies -->
+  </head>
+  <body ng-app="AperturaAdmin" ng-controller="UserPage" class="user-page">
+    <page-header></page-header>
+    <div class="container">
+      <main>
+
+        <div class="row">
+          <div class="row__cell">
+            <h1>{{ user.name }}</h1>
+            <div>{{ user.email }}</div>
+            <div class="text-lg">Signed up on {{ user.dateJoinedAsDate | date:'MMM dd, yyyy h:mma'}}</div>
+          </div>
+          <div class="row__cell row__cell--fixed">
+            <a href="users" class="no-underline"><span class="icon icon-chevron-left"></span> All users</a>
+          </div>
+        </div>
+
+        <div class="breathe">
+          <div>Photos: {{ totalPhotos }}</div>
+          <div>Storage used: {{ totalStorageUsed | number:1 }}GB</div>
+        </div>
+
+        <section class="breathe">
+          <h2>Recent Uploads</h2>
+          <div ng-show="recentUploads.length == 0">
+            {{ user.name }} hasn't uploaded any photos yet.
+          </div>
+          <div class="sidescroller" ng-show="recentUploads.length > 0">
+            <table>
+              <thead>
+                <th class="text-right">pfID</th>
+                <th class="text-left">Camera</th>
+                <th class="text-left">Filename</th>
+                <th class="text-right">Date</th>
+                <th class="text-right">Original</th>
+                <th class="text-right">Status</th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="photo in recentUploads">
+                  <td class="text-right">{{ photo.photoFileId }}</td>
+                  <td class="text-left">{{ photo.cameraModel }}</td>
+                  <td class="text-left">{{ photo.filename }}</td>
+                  <td class="text-right">{{ photo.dateUploadedAsDate | date:'MMM dd, yyyy h:mma' }}</td>
+                  <td class="text-right">{{ photo.originalFilename }}</td>
+                  <td class="text-right">{{ photo.status }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </body>
+</html>

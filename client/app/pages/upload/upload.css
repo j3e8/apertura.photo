@@ -1,0 +1,84 @@
+.upload-page {
+	main {
+		background-image: url(assets/images/drag-to-upload.png);
+		background-position: center center;
+		background-size: 300px 300px;
+		background-repeat: no-repeat;
+	}
+
+	div.upload-text {
+		font-size: 18px;
+		opacity: 0.7;
+		position: absolute;
+		top: calc(50% - 60px);
+		left: calc(50% - 150px);
+		width: 300px;
+		height: 100px;
+	}
+
+	div.upload-list {
+		position: fixed;
+		right: 30px;
+		bottom: 0;
+		max-width: 400px;
+		border: none;
+		padding: 20px;
+		background-color: #fff;
+		box-shadow: 0 0 10px -2px #595050;
+		-webkit-box-shadow: 0 0 10px -2px #595050;
+		-moz-box-shadow: 0 0 10px -2px #595050;
+		img {
+			max-width: 400px;
+		}
+	}
+
+	div.photos-status {
+		margin: 20px 0;
+		max-height: 500px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
+	div.photos-status__photo {
+		padding: 10px;
+		color: #444;
+		font-size: 14px;
+		height: 100px;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		border-top: 1px solid #e6e6e6;
+	}
+	div.photos-status__photo:last-child {
+		border-bottom: 1px solid #e6e6e6;
+	}
+	div.photos-status__photo img {
+		max-width: 80px;
+		max-height: 90px;
+	}
+	div.row > div.row__cell.row__cell--upload-progress {
+		flex: 0 0 100px;
+		-webkit-flex: 0 0 100px;
+		-moz-flex: 0 0 100px;
+		-ms-flex: 0 0 100px;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		text-align: right;
+	}
+	div.progress-bar {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		height: 6px;
+		width: 100%;
+		background-color: #e6e6e6;
+	}
+	div.progress-bar__fill {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		height: 6px;
+		background-color: #3875f0;
+	}
+}

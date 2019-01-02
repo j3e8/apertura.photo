@@ -1,0 +1,38 @@
+.downloads-page {
+  .coming-soon {
+    font-size: 20px;
+  }
+
+  section.welcome {
+    background-color: #ff4a88;
+    color: #fff;
+    padding: 30px;
+  }
+
+  ol li {
+    padding: 8px 0;
+  }
+
+  @media screen and (max-width: 1280px) {
+    div.row.downloads-row > div.row__cell {
+      flex: 0 0 calc(50% - 20px);
+      -webkit-flex: 0 0 calc(50% - 20px);
+      -moz-flex: 0 0 calc(50% - 20px);
+      -ms-flex: 0 0 calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    div.row.downloads-row > div.row__cell {
+      flex: 0 0 calc(100% - 10px);
+      -webkit-flex: 0 0 calc(100% - 10px);
+      -moz-flex: 0 0 calc(100% - 10px);
+      -ms-flex: 0 0 calc(100% - 10px);
+    }
+    
+    #windows,
+    #mac-os {
+      display: none;
+    }
+  }
+}

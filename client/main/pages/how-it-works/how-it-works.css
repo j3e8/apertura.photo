@@ -1,0 +1,190 @@
+.how-it-works-page {
+  main {
+    background-color: #94D9C0;
+    padding: 30px 0;
+  }
+
+  h1 {
+    margin-left: 30px;
+  }
+
+  footer {
+    background-color: #fff;
+    text-align: center;
+    font-size: 14px;
+    color: #595050;
+    padding: 30px 0 80px 0;
+  }
+
+  .jumbo {
+    font-size: 46px;
+    text-shadow: 0 0 3px #595050;
+  }
+  @media screen and (max-width: 800px) {
+    .jumbo {
+      font-size: 30px;
+    }
+  }
+
+  .text-block {
+    font-size: 40px;
+    font-weight: 500;
+    padding: 30px;
+  }
+  .text-details {
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 20px;
+    color: #595050;
+  }
+
+  section.step {
+    height: 480px;
+    margin-bottom: 140px;
+    position: relative;
+  }
+  @media screen and (max-width: 640px) {
+    section.step {
+      margin-bottom: 80px;
+    }
+  }
+  #step1 {
+    background-color: #3BB8AF;
+  }
+  #step2 {
+    background-color: #FF9796;
+  }
+  #step3 {
+    background-color: #F2E385;
+  }
+
+
+  #step1-image {
+    height: 480px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 480px;
+    background-image: url(assets/images/how-it-works/step1.jpg);
+  }
+
+  #step2-image {
+    height: 480px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: auto 480px;
+    background-image: url(assets/images/how-it-works/step2.jpg);
+  }
+
+  #step3-image {
+    height: 480px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 480px;
+    background-image: url(assets/images/how-it-works/step3.jpg);
+  }
+  @media screen and (max-width: 540px) {
+    #step1-image,
+    #step3-image {
+      background-position: left center;
+    }
+    #step2-image {
+      background-position: right center;
+    }
+  }
+
+  .step-image {
+    flex: 1 1 60%;
+    -webkit-flex: 1 1 60%;
+    -moz-flex: 1 1 60%;
+    -ms-flex: 1 1 60%;
+  }
+  .step-text {
+  }
+
+  .lead-into-next-step {
+    position: absolute;
+    top: calc(100% - 60px);
+    left: 3%;
+    width: 94%;
+    height: 260px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 3;
+  }
+  .lead-into-next-step.rtl {
+    background-image: url(assets/images/how-it-works/flow-arrow-rtl.png);
+  }
+  .lead-into-next-step.ltr {
+    background-image: url(assets/images/how-it-works/flow-arrow-ltr.png);
+  }
+
+  @media screen and (max-width: 800px) {
+    .lead-into-next-step {
+      height: 100px;
+      top: calc(100% - 20px);
+    }  
+  }
+  @media screen and (max-width: 1024px) {
+    div.row.row--wrap-1024 {
+      flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      -moz-flex-wrap: wrap;
+    }
+    div.row.row--wrap-1024 > div.row__cell,
+    div.row.row--wrap-1024 > div.row__cell.row__cell--fixed60 {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+
+    section.step {
+      height: auto;
+    }  
+  }
+
+  @media screen and (max-width: 800px) {
+    #step1-image,
+    #step2-image,
+    #step3-image {
+      height: 430px;
+      background-size: auto 430px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #step1-image,
+    #step2-image,
+    #step3-image {
+      height: 380px;
+      background-size: auto 380px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    #step1-image,
+    #step2-image,
+    #step3-image {
+      height: 320px;
+      background-size: auto 320px;
+    }
+  }
+
+  .video-text-block {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 50%;
+    text-align: left;
+  }
+  @media screen and (max-width: 800px) {
+    .video-text-block {
+      top: 100%;
+      width: 100%;
+    }
+    .video-text-block .jumbo {
+      text-shadow: none;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.search-page {
+  div.container {
+    min-height: 100%;
+  }
+  main {
+    height: 100%;
+  }
+}

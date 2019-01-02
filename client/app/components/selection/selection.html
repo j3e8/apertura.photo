@@ -1,0 +1,47 @@
+<div class="selection-bar" ng-class="{'open' : selectionIsDisplayed, 'closed' : selectionIsDisplayed === false}">
+  <div class="selection-close" ng-click="selectNone()"></div>
+  <div class="selection-text" ng-show="selectedPhotos.length == 1">
+    Choose what you want to do with this <span class="text-xl pink">1</span> photo
+  </div>
+  <div class="selection-text" ng-show="selectedPhotos.length != 1">
+    Choose what you want to do with these <span class="text-xl pink">{{ selectedPhotos.length }}</span> photos
+  </div>
+  <div class="breathe">
+    <select ng-model="selectedAction" ng-options="action as action.displayName for action in actions"></select>
+    <div class="selection-tag" ng-show="selectedAction.id == 'tag'">
+      <tag-box photos="selectedPhotos"></tag-box>
+    </div>
+    <div class="selection-collection" ng-show="selectedAction.id == 'collection'">
+      <select ng-model="selectedCollection" ng-options="collection as collection.name for collection in collections"></select>
+      <input type="text" ng-model="newCollectionName" placeholder="Family vacation to Zion" ng-show="!selectedCollection.id" />
+      <button ng-click="addToCollection()">Add</button>
+    </div>
+    <div class="selection-delete" ng-show="selectedAction.id == 'delete'">
+      <button ng-click="toggleDeletePhotoDialog()">Delete</button>
+    </div>
+  </div>
+  <div class="select-all-none">
+    <span class="link" ng-click="selectAll()">Select all</span>
+    <span class="link" ng-click="selectNone()">Cancel</span>
+  </div>
+
+  <div ng-show="deletePhotoDialogIsDisplayed" class="dialog-box-shadow" ng-click="toggleDeletePhotoDialog();"></div>
+  <div ng-show="deletePhotoDialogIsDisplayed" class="dialog-box">
+    <h1>Are you sure?</h1>
+    <div ng-show="selectedPhotos.length == 1">
+      <div class="breathe">Are you sure you want to delete this photo forever?  We'll keep track of it and make sure it's never uploaded again.</div>
+      <div class="breathe text-center">
+        <div class="delete-image-thumbnail">
+          <img ng-src="{{ selectedPhotos[0].filename ? selectedPhotos[0].filename+'/600' : '' }}" />
+        </div>
+      </div>
+    </div>
+    <div ng-show="selectedPhotos.length > 1">
+      <div class="breathe">Are you sure you want to delete these {{ selectedPhotos.length }} photos forever?  We'll keep track of them and make sure they're never uploaded again.</div>
+    </div>
+    <div class="dialog-box-buttons">
+      <button ng-click="toggleDeletePhotoDialog(); $event.stopPropagation();" class="cancel">Cancel</button>
+      <button ng-click="deleteSelectedPhotos(); $event.stopPropagation();">Yes, I'm sure</button>
+    </div>
+  </div>
+</div>

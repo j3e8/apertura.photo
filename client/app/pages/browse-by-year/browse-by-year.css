@@ -1,0 +1,36 @@
+.browse-by-year-page {
+  div.row div.row__cell.row__cell--month {
+    flex: 0 1 25%;
+    -webkit-flex: 0 1 25%;
+    -moz-flex: 0 1 25%;
+    -ms-flex: 0 1 25%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: rgba(148,217,192,0.3);
+    height: 250px;
+  }
+  @media screen and (max-width: 640px) {
+    div.row div.row__cell.row__cell--month {
+      height: 100px;
+    }
+  }
+
+  div.content {
+    padding: 10px;
+    background-color: rgba(255,255,255,0.7);
+  }
+
+  @media screen and (max-width: 640px) {
+    div.content {
+      padding: 5px;
+    }
+  }
+
+  div.row div.row__cell.row__cell--month h4 {
+    font-weight: normal;
+  }
+  div.row div.row__cell.row__cell--month.photo-cell h4 {
+  }
+}

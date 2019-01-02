@@ -1,0 +1,10 @@
+.users-page {
+  .sidescroller {
+    max-width: 100%;
+    overflow-x: scroll;
+  }
+
+  table td {
+    white-space: nowrap;
+  }
+}

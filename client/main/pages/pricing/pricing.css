@@ -1,0 +1,81 @@
+.pricing-page {
+  #pricing-photo {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/pricing/family.jpg);
+  }
+  #price-container {
+    flex: 0 0 60%;
+    -webkit-flex: 0 0 60%;
+    -moz-flex: 0 0 60%;
+    -ms-flex: 0 0 60%;
+  }
+  @media screen and (max-width: 800px) {
+    #pricing-photo {
+      background: none;
+      display: none;
+    }
+    #price-container {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+  }
+
+  main {
+    height: calc(100% - 90px);
+  }
+
+  h1 {
+    margin-top: 60px;
+  }
+
+  .content-container {
+    color: #fff;
+    width: calc(100% - 250px);
+    margin: 30px auto;
+  }
+  @media screen and (max-width: 480px) {
+    .content-container {
+      width: calc(100% - 30px);
+    }
+  }
+
+  section.product-listing {
+    margin: 40px 0;
+  }
+
+  .product {
+    color: #fff;
+    font-size: 26px;
+    margin-right: 20px;
+    display: inline-block;
+  }
+
+  .price {
+    font-size: 24px;
+    color: #595050;
+  }
+  @media screen and (max-width: 800px) {
+    .price {
+      font-size: 22px;
+    }
+  }
+
+  .product-details {
+    font-size: 16px;
+    color: #595950;
+  }
+
+  a.button.yellow {
+    background-color: #f2e385;
+    color: #595050;
+  }
+
+  a.button.light-green {
+    background-color: #94d9c0;
+    color: #595050;
+  }
+}

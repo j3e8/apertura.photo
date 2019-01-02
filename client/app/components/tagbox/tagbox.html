@@ -1,0 +1,15 @@
+<form name="tagForm" onSubmit="return false;" style="position: relative;">
+  <div class="row row--spaced">
+    <div class="row__cell" style="position: relative;">
+      <input type="text" name="tagInput" focus-when="needsFocus" ng-model="tag" ng-keypress="handleKeyPress($event)" ng-keydown="handleKeyDown($event)" ng-keyup="handleKeyUp($event)" placeholder="Place, event, person's name, etc." ng-blur="unfocus()" />
+    </div>
+    <div class="row__cell row__cell--fixed">
+      <button ng-click="handleAddTagButtonClick()">Add</button>
+    </div>
+  </div>
+  <div ng-show="tagSuggestions.length" class="tag-suggestions">
+    <div ng-repeat="tag in tagSuggestions" class="tag-suggestion" ng-class="{'highlighted':($index == highlightedIndex)}" ng-click="handleTagClick(tag.tagName)">
+      {{ tag.tagName }}
+    </div>
+  </div>
+</form>

@@ -1,0 +1,26 @@
+.signin-page {
+  div.row > div.row__cell.signin-form {
+    flex: 0 0 33.3%;
+    -webkit-flex: 0 0 33.3%;
+    -moz-flex: 0 0 33.3%;
+    -ms-flex: 0 0 33.3%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    div.row > div.row__cell.signin-form {
+      flex: 0 0 75%;
+      -webkit-flex: 0 0 75%;
+      -moz-flex: 0 0 75%;
+      -ms-flex: 0 0 75%;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    div.row > div.row__cell.signin-form {
+      flex: 0 0 90%;
+      -webkit-flex: 0 0 90%;
+      -moz-flex: 0 0 90%;
+      -ms-flex: 0 0 90%;
+    }
+  }
+}

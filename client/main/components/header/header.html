@@ -1,0 +1,28 @@
+    <header>
+      <div class="row row--spaced row--vertical-bottom">
+        <div class="row__cell logo-cell">
+          <a href="index" id="logo"><img src="assets/images/apertura.png" style="height: 65px;" /></a>
+          <a href="index" id="logo-tablet"><img src="assets/images/apertura-mark.png" style="height: 48px;" /></a>
+        </div>
+        <div class="row__cell menu-cell" style="position: relative;">
+          <nav ng-click="togglePopupMenu()">
+            <span class="icon-menu"></span>
+            <ul ng-show="popupMenuIsDisplayed">
+              <li class="mobile"><a href="index">About</a></li>
+              <li><a href="how-it-works">How it works</a></li>
+              <li><a href="pricing">Pricing</a></li>
+              <li><a href="contact">Contact us</a></li>
+              <li class="desktop"><a href="downloads">Downloads</a></li>
+              <li class="mobile"><a href="app/signin">Sign in</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="row__cell text-center mobile-logo-cell">
+          <a href="index" id="logo-mobile"><img src="assets/images/apertura-mark.png" style="height: 48px;" /></a>
+        </div>
+        <div class="row__cell text-right signup-cell" style="padding-bottom: 20px;">
+          <a href="app/signin" id="sign-in">Sign in</a>
+          <a href="signup" class="button" style="margin-left: 15px;">Sign up</a>
+        </div>
+      </div>
+    </header>

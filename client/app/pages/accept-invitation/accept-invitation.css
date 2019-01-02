@@ -1,0 +1,35 @@
+.accept-invitation-page {
+  div.row > div.row__cell.form-cell {
+    flex: 0 0 40%;
+    -webkit-flex: 0 0 40%;
+    -moz-flex: 0 0 40%;
+    -ms-flex: 0 0 40%;
+  }
+
+  @media (max-width: 1024px) {
+    div.row > div.row__cell.form-cell {
+      flex: 0 0 60%;
+      -webkit-flex: 0 0 60%;
+      -moz-flex: 0 0 60%;
+      -ms-flex: 0 0 60%;
+    }
+  }
+
+  @media (max-width: 800px) {
+    div.row > div.row__cell.form-cell {
+      flex: 0 0 80%;
+      -webkit-flex: 0 0 80%;
+      -moz-flex: 0 0 80%;
+      -ms-flex: 0 0 80%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    div.row > div.row__cell.form-cell {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+  }
+}

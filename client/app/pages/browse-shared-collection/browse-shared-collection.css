@@ -1,0 +1,22 @@
+.browse-shared-collection-page {
+  @media (max-width: 800px) {
+    div.row > div.row__cell.collection-title {
+      flex: 0 0 calc(100% - 20px);
+      -webkit-flex: 0 0 calc(100% - 20px);
+      -moz-flex: 0 0 calc(100% - 20px);
+      -ms-flex: 0 0 calc(100% - 20px);
+    }
+    div.row > div.row__cell.collection-selection {
+      flex: 0 0 calc(100% - 20px);
+      -webkit-flex: 0 0 calc(100% - 20px);
+      -moz-flex: 0 0 calc(100% - 20px);
+      -ms-flex: 0 0 calc(100% - 20px);
+    }
+    div.row > div.row__cell.collection-actions {
+      flex: 0 0 calc(100% - 20px);
+      -webkit-flex: 0 0 calc(100% - 20px);
+      -moz-flex: 0 0 calc(100% - 20px);
+      -ms-flex: 0 0 calc(100% - 20px);
+    }
+  }
+}

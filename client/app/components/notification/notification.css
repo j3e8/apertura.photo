@@ -1,0 +1,37 @@
+div.notification {
+  position: fixed;
+  z-index: 200;
+  display: none;
+  top: 10px;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  border-radius: 5px;
+  background-color: rgba(242, 227, 133, 0.7);
+  padding: 15px;
+  cursor: pointer;
+}
+div.notification.open {
+  display: block;
+  animation: __open 0.3s linear;
+  -webkit-animation: __open 0.3s linear;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+div.notification.closed {
+  display: none;
+}
+
+@keyframes __open {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes __open {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+div.notification__text {
+  text-align: left;
+}

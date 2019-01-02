@@ -1,0 +1,92 @@
+.collections-page {
+  div.row > div.row__cell.collection-cell {
+    flex: 1 0 640px;
+    -webkit-flex: 1 0 640px;
+    -moz-flex: 1 0 640px;
+    -ms-flex: 1 0 640px;
+  }
+
+  @media screen and (max-width: 800px) {
+    div.row > div.row__cell.collection-cell {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+  }
+
+  div.row > div.row__cell.collection-options-cell {
+    flex: 0 0 36px;
+    -webkit-flex: 0 0 36px;
+    -moz-flex: 0 0 36px;
+    -ms-flex: 0 0 36px;
+    position: relative;
+    padding: 6px;
+    padding-top: 8px;
+  }
+
+  .collection-option {
+    cursor: pointer;
+    padding: 13px 10px 10px 10px;
+  }
+  .collection-option:hover {
+    background-color: #68C9B8;
+  }
+
+  div.row > div.row__cell.collection-count {
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 20px;
+    overflow: hidden;
+    background-color: #94d9c0;
+  }
+  div.row > div.row__cell.collection-name {
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 14px;
+    overflow: hidden;
+    background-color: #94d9c0;
+    padding-top: 16px;
+  }
+  .collection-options-icon {
+    font-size: 24px;
+  }
+
+  div.collection-options-menu {
+    position: absolute;
+    z-index: 2;
+    right: 100%;
+    top: 0;
+    height: 100%;
+    width: 120px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #3bb8af;
+  }
+
+  input[type=text].edit-collection {
+    margin: -14px 0 -10px -5px;
+  }
+
+  .carousel {
+    height: 100px;
+    width: 100%;
+    overflow-x: scroll;
+    background-color: #e0e0e0;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel .carousel-img {
+    height: 100%;
+    display: inline-block;
+  }
+
+  .carousel img {
+    height: 100%;
+    width: auto;
+  }
+}

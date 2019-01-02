@@ -1,0 +1,45 @@
+.renew-page {
+  .form-field {
+  	margin: 2px 0;
+  }
+
+
+
+  .form-content {
+    flex: 0 0 60%;
+    -webkit-flex: 0 0 60%;
+    -moz-flex: 0 0 60%;
+    -ms-flex: 0 0 60%;
+  }
+  @media screen and (max-width: 800px) {
+    .form-content {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+    #card-number-cell {
+      flex: 0 0 100%;
+      -webkit-flex: 0 0 100%;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+    }
+    div.row > div.row__cell.account-section {
+      flex: 0 0 calc(100% - 10px);
+      -webkit-flex: 0 0 calc(100% - 10px);
+      -moz-flex: 0 0 calc(100% - 10px);
+      -ms-flex: 0 0 calc(100% - 10px);
+    }
+  }
+
+  form {
+    height: 100%;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    margin: 6px 0 2px 0;
+    text-transform: none;
+  }
+}

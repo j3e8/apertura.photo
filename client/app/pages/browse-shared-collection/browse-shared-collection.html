@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <title>Browse Collection</title>
+      <!-- BEGIN standard dependencies -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+      <script type="text/javascript" src="bundle.js"></script>
+      <link type="text/css" rel="stylesheet" href="bundle.css" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+      <link rel="manifest" href="assets/images/favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-78679351-2', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- END standard dependencies -->
+  </head>
+  <body ng-app="AperturaApp" ng-controller="BrowseSharedCollectionPage" class="browse-shared-collection-page">
+
+    <page-header></page-header>
+    <div class="container">
+      <main>
+
+        <div>
+          <div class="row row--wrap row--spaced row--vertical-bottom" ng-hide="collectionInfoIsLoading">
+            <div class="row__cell collection-title">
+              <h1>Photos shared by {{ collection.username }}</h1>
+              <h3 class="pink" ng-show="photos.length > 1">{{ photos.length }} photos</h3>
+              <h3 class="pink" ng-show="photos.length == 1">1 photo</h3>
+            </div>
+            <div class="row__cell row__cell--fixed collection-selection" ng-show="$site.isSignedIn">
+              <div class="row row--wrap row--spaced row--vertical-center">
+                <div class="row__cell text-right">
+                  <span class="link" ng-click="selectAllPhotos()">Select all</span>
+                </div>
+                <div class="row__cell row__cell--fixed">
+                  <span class="link" ng-click="deselectAllPhotos()">Select none</span>
+                </div>
+              </div>
+            </div>
+            <div class="row__cell row__cell--fixed collection-actions" ng-show="$site.isSignedIn">
+              <div class="row row--wrap row--spaced row--vertical-center">
+                <div class="row__cell text-right">
+                  <button class="pink" ng-click="importPhotos()">Copy to My Account</button>
+                </div>
+                <div class="row__cell row__cell--fixed">
+                  <span class="icon icon--button icon-slideshow" ng-click="startSlideshow()"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="breathe" ng-hide="$site.isSignedIn">
+            <div class="well pink-bg white">
+              <div class="row row--wrap row--spaced row--vertical-center">
+                <div class="row__cell">
+                  You need to sign in to save these photos to your account!
+                </div>
+                <div class="row__cell row__cell--fixed">
+                  <span class="link white" ng-click="displaySignInDialog()">Sign in</span>
+                </div>
+                <div class="row__cell row__cell--fixed">
+                  <button class="yellow" ng-click="displaySignUpDialog()">Sign up</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center" ng-show="photosAreLoading">
+            <wait-indicator></wait-indicator>
+          </div>
+
+          <div class="breathe" ng-hide="photosAreLoading">
+            <div class="row row--wrap row--spaced">
+              <div class="row__cell row__cell--img" ng-repeat="photo in photos">
+
+                <thumbnail photo="photo" photos="photos" on-click="openLightBox" editing="disabled"></thumbnail>
+
+              </div>
+              <div class="row__cell row__cell--blank"></div>
+              <div class="row__cell row__cell--blank"></div>
+              <div class="row__cell row__cell--blank"></div>
+              <div class="row__cell row__cell--blank"></div>
+              <div class="row__cell row__cell--blank"></div>
+            </div>
+          </div>
+
+          <lightbox photo="lightBoxPhoto" photos="photos" editing="disabled"></lightbox>
+          <slideshow></slideshow>
+        </div>
+
+
+        <div class="dialog-box-shadow" ng-show="sharedPhotosDialogIsDisplayed" ng-click="toggleSharedPhotosDialog()"></div>
+        <div class="dialog-box pink-bg" ng-show="sharedPhotosDialogIsDisplayed" ng-class="{'open' : sharedPhotosDialogIsDisplayed, 'closed' : sharedPhotosDialogIsDisplayed === false}">
+          <h2>Someone shared photos with you!</h2>
+          <p>
+            Another Apertura user ({{ collection.username }}) shared a collection of photos with you.
+            This shared collection still belongs to {{ collection.username }}, so he/she can continue to add/remove photos.
+          </p>
+          <p>
+            If you choose to copy these photos to your own Apertura account, you will be able to keep them indefinitely as well as add tags and organize them.
+          </p>
+          <div class="breathe text-center">
+            <button class="yellow" ng-click="toggleSharedPhotosDialog()">Ok, I've got it</button>
+          </div>
+        </div>
+
+
+        <div class="dialog-box-shadow" ng-show="photosCopiedDialogIsDisplayed"></div>
+        <div class="dialog-box yellow-bg" ng-show="photosCopiedDialogIsDisplayed" ng-class="{'open' : photosCopiedDialogIsDisplayed, 'closed' : photosCopiedDialogIsDisplayed === false}">
+          <h2>Photos Copied</h2>
+          <p ng-show="importedPhotoCount > 1">
+            These {{ importedPhotoCount }} photos have been successfully copied to your Apertura account. You can find them in the Recently Added area.
+          </p>
+          <p ng-show="importedPhotoCount == 1">
+            One photo was successfully copied to your Apertura account. You can find it in the Recently Added area.
+          </p>
+          <div class="breathe text-center">
+            <button class="green" ng-click="goToRecentlyAdded()">Go to Recently Added</button>
+            <button class="secondary" ng-click="togglePhotosCopiedDialog()">Stay on this page</button>
+          </div>
+        </div>
+
+
+        <div class="dialog-box-shadow" ng-show="isCopyingPhotos"></div>
+        <div class="dialog-box" ng-show="isCopyingPhotos">
+          <div class="text-center">
+            <div>Copying photos to your account...</div>
+            <div class="breathe">
+              <wait-indicator></wait-indicator>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </body>
+</html>

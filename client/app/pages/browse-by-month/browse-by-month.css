@@ -1,0 +1,10 @@
+.browse-by-month-page {
+  div.calendar {
+  	height: 750px;
+  }
+  @media screen and (max-width: 640px) {
+  	div.calendar {
+  		height: 320px;
+  	}
+  }
+}

@@ -1,0 +1,62 @@
+.tags-page {
+  div.row > div.row__cell.tag-cell {
+    flex: 1 0 250px;
+    -webkit-flex: 1 0 250px;
+    -moz-flex: 1 0 250px;
+    -ms-flex: 1 0 250px;
+  }
+
+  div.row > div.row__cell.tag-options-cell {
+    flex: 0 0 36px;
+    -webkit-flex: 0 0 36px;
+    -moz-flex: 0 0 36px;
+    -ms-flex: 0 0 36px;
+    position: relative;
+    padding: 6px;
+    padding-top: 8px;
+  }
+
+  .tag-option {
+    cursor: pointer;
+    padding: 13px 10px 10px 10px;
+  }
+  .tag-option:hover {
+    background-color: #68C9B8;
+  }
+
+  div.row > div.row__cell.tag-count {
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 20px;
+    overflow: hidden;
+    background-color: #94d9c0;
+  }
+  div.row > div.row__cell.tag-name {
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 14px;
+    overflow: hidden;
+    background-color: #94d9c0;
+    padding-top: 16px;
+  }
+  .tag-options-icon {
+    font-size: 24px;
+  }
+
+  div.tag-options-menu {
+    position: absolute;
+    z-index: 2;
+    right: 100%;
+    top: 0;
+    height: 100%;
+    width: 120px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #3bb8af;
+  }
+
+  input[type=text].edit-tag {
+    margin: -14px 0 -10px -5px;
+  }
+}

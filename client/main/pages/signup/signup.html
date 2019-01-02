@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta keywords="photo backup,photo storage,photo cloud,organize photos,store photos,share photos,preserve photos" />
+    <meta description="Automatically store and organize your photos from all your devices so you can view them on any device." />
+    <title>Apertura: Store and organize your photos</title>
+      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+      <!-- BEGIN standard dependencies -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+      <script type="text/javascript" src="bundle.js"></script>
+      <link type="text/css" rel="stylesheet" href="bundle.css" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+      <link rel="manifest" href="assets/images/favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-78679351-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- END standard dependencies -->
+  </head>
+  <body ng-app="apertura" ng-controller="SignUpPage" class="signup-page">
+    <page-header></page-header>
+    <main>
+
+      <div class="row light-green-bg stripes-right" style="height:100%;">
+        <div class="row__cell row__cell--fixed40" id="signup-photo"></div>
+        <div class="row__cell form-content stripes-left" style="height: 100%; position: relative;">
+          <div class="content-container">
+
+            <form name="signupForm" id="signupForm" novalidate autocomplete="off">
+
+              <div class="row row--spaced row--wrap form" id="form1" ng-class="{'onscreen':phase === undefined, 'show':phase == 1, 'hide':phase == 2}" style="height: 100%; overflow-y: scroll;">
+                <div class="row__cell">
+                  <!--<div class="form half" id="form1" ng-class="{'onscreen':phase === undefined, 'show':phase == 1, 'hide':phase == 2}">-->
+                  <h1>Sign up</h1>
+
+                  <div class="breathe">
+                    <label>Email</label>
+                    <input type="email" name="email" ng-model="email" maxlength="100" ng-class="{'available':emailIsAvailable,'unavailable':emailIsAvailable===false,'invalid':emailIsValid===false}" placeholder="my@email.com" autofocus required ng-keypress="catchEnter($event)" ng-blur="checkEmailAvailability()" />
+                  </div>
+
+                  <div class="breathe">
+                    <label>Username <i>(optional)</i></label>
+                    <input type="text" name="username" maxlength="20" ng-model="username" ng-class="{'available':usernameIsAvailable,'unavailable':usernameIsAvailable===false,'invalid':usernameIsValid===false}" placeholder="jonesFam" ng-keypress="catchEnter($event)" ng-blur="checkUsernameAvailability()" />
+                  </div>
+
+                  <div class="breathe">
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="password" ng-class="{'invalid':passwordIsValid===false}" required ng-change="doPasswordsMatch()" ng-keypress="catchEnter($event)" />
+                  </div>
+
+                  <div class="breathe">
+                    <label>Confirm password</label>
+                    <input type="password" name="password2" ng-model="password2" ng-class="{'invalid':passwordIsValid===false}" required ng-change="doPasswordsMatch()" ng-keypress="catchEnter($event)" />
+                    <div class="warning" ng-hide="passwordsMatch || signupForm.password.$pristine || signupForm.password2.$pristine">Passwords don't match</div>
+                  </div>
+
+                  <div class="breathe">
+                    <div class="row row--spaced row--vertical-center">
+                      <div class="row__cell gray">
+                        <div>Free trial</div>
+                        <div>No credit card required</div>
+                      </div>
+                      <div class="row__cell row__cell--fixed text-right">
+                        <button ng-click="validatePersonalInfo()" ng-hide="isSubmitting">Sign up</button>
+                        <wait-indicator ng-show="isSubmitting"></wait-indicator>
+                      </div>
+                    </div>
+                    <div class="breathe fine-print">
+                      After your trial period ends, it's just 99&cent;/mo to continue using Apertura. <b>Cancel anytime</b>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row__cell" id="apps">
+                  <div class="row row--spaced">
+                    <div class="row__cell row__cell--fixed10"></div>
+                    <div class="row__cell fine-print">
+                      <div><img src="assets/images/apps/windowslogo.png" style="width: 100%;" /></div>
+                      Apertura is available for Windows 7, 8 and 10
+                    </div>
+                    <div class="row__cell row__cell--fixed10"></div>
+                    <div class="row__cell fine-print">
+                      <div><img src="assets/images/apps/appstore.svg" style="width: 100%;" /></div>
+                      Download Apertura from the App Store for your iPhone or iPad.
+                    </div>
+                    <div class="row__cell row__cell--fixed10"></div>
+                  </div>
+                  <div class="row row--spaced">
+                    <div class="row__cell row__cell--fixed10"></div>
+                    <div class="row__cell fine-print">
+                      <div class="row">
+                        <div class="row__cell row__cell--fixed"><img src="assets/images/apps/MacOS.svg" style="height: 60px;" /></div>
+                        <div class="row__cell" style="padding-left: 8px;">
+                          Apertura is available for Mac OS X
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row__cell row__cell--fixed10"></div>
+                    <div class="row__cell fine-print">
+                      <div style="opacity: 0.3;"><img src="assets/images/apps/google-play-badge.png" style="width: 100%;" /></div>
+                      Coming soon to the Google Play Store
+                    </div>
+                    <div class="row__cell row__cell--fixed10"></div>
+                  </div>
+                  <div class="breathe">
+                    <div class="row">
+                      <div class="row__cell row__cell--fixed10"></div>
+                      <div class="row__cell">
+                        Apertura is the easiest, most affordable way to preserve and organize your photos. You can cancel anytime and can download your original photos whenever you need them. It's that simple.
+                      </div>
+                      <div class="row__cell row__cell--fixed10"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--
+              <div class="form" id="form2" ng-class="{'offscreen':phase === undefined, 'hide':phase == 1, 'show':phase == 2}">
+                <h1>Payment info</h1>
+
+                <div class="breathe">
+                  <div class="row row--spaced">
+                    <div class="row__cell">
+                      <label>First name</label>
+                      <input type="text" name="firstName" ng-model="firstName" required />
+                    </div>
+                    <div class="row__cell">
+                      <label>Last name</label>
+                      <input type="text" name="lastName" ng-model="lastName" required />
+                    </div>
+                  </div>
+                  <div class="row row--spaced row--wrap">
+                    <div class="row__cell" id="card-number-cell">
+                      <label>Card number</label>
+                      <input type="text" data-stripe="number" maxlength="16" ng-model="cardNumber" ng-class="{'invalid':!cardIsValid}" required />
+                    </div>
+                    <div class="row__cell">
+                      <div class="row row--spaced">
+                        <div class="row__cell">
+                          <label>Sec. code</label>
+                          <input type="text" data-stripe="cvc" maxlength="4" ng-model="securityCode" ng-class="{'invalid':!securityCodeIsValid}" placeholder="123" required />
+                        </div>
+                        <div class="row__cell row__cell--fixed">
+                          <label>Exp.</label>
+                          <select data-stripe="exp_month" ng-model="expMonth">
+                            <option value="1">Jan</option>
+                            <option value="2">Feb</option>
+                            <option value="3">Mar</option>
+                            <option value="4">Apr</option>
+                            <option value="5">May</option>
+                            <option value="6">Jun</option>
+                            <option value="7">Jul</option>
+                            <option value="8">Aug</option>
+                            <option value="9">Sep</option>
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dec</option>
+                          </select>
+                        </div>
+                        <div class="row__cell row__cell--fixed">
+                          <label>&nbsp;</label>
+                          <select data-stripe="exp_year" ng-model="expYear" ng-options="year for year in expirationYears"></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row row--spaced">
+                    <div class="row__cell">
+                      <label>&nbsp;</label>
+                      <div class="inline text-lg">{{ subscription.name }}</div>
+
+                      <div class="inline price">
+                        <b>{{ subscription.price | currency }}</b>/mo.
+                      </div>
+
+                      <div class="product-details">
+                        {{ subscription.price | currency }} per month starting on the day you sign up. This subscription provides {{ subscription.storage }}GB of fully-redundant photo storage which is more than enough for most people (about 60,000 high res photos). If you ever need more storage (which isn't likely for a long time), it's just $1 more per month for another 80GB.
+                      </div>
+
+                      <div class="breathe text-lg yellow">
+                        <b>Paid month to month, cancel anytime.</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="breathe text-right">
+                  <button ng-click="validatePaymentInfo()" ng-hide="isSubmitting">Sign up</button>
+                  <wait-indicator ng-show="isSubmitting"></wait-indicator>
+                </div>
+              </div>-->
+
+            </form>
+
+          </div>
+          <div class="text-center fine-print" style="position: absolute; bottom: 10px; width: 100%;">
+            © 2016 Apertura. All rights reserved.
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </body>
+</html>

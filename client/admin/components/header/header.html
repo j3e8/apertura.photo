@@ -1,0 +1,77 @@
+<div>
+  <header>
+    <div class="header__logo">
+      <div class="contain-width">
+        <div class="row row--spaced row--vertical-center">
+          <div class="row__cell row__cell--fixed mobile-only">
+            <img src="assets/images/back-arrow.png" class="clickable" onClick="history.go(-1);" style="height: 40px;" />
+          </div>
+          <div class="row__cell row__cell--fixed relative">
+            <img src="assets/images/apertura.png" class="logo clickable" ng-click="$site.navigateTo('usage')" />
+            <img src="assets/images/apertura-mark.png" class="logo-mobile clickable" ng-click="togglePopupMenu()" />
+            <nav ng-show="$site.isSignedIn && popupMenuIsDisplayed !== undefined && $site.userstatus != 'suspended'">
+              <ul ng-class="{'open': popupMenuIsDisplayed, 'closed': popupMenuIsDisplayed === false}">
+                <li ng-click="$site.navigateTo('usage')">Usage</li>
+                <li ng-click="$site.navigateTo('users')">Users</li>
+                <li ng-click="$site.navigateTo('headers')">Headers</li>
+              </ul>
+            </nav>
+          </div>
+          <div class="row__cell row__cell--fixed mobile-only">
+            <img src="assets/images/forward-arrow.png" class="clickable" onClick="history.go(1);" style="height: 40px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="$site.isSignedIn && standardMenuIsDisplayed && $site.userstatus != 'suspended'" class="header__nav">
+      <div class="contain-width">
+        <div class="row">
+          <div class="row__cell">
+            <nav>
+              <ul>
+                <li ng-click="$site.navigateTo('usage')">Usage</li>
+                <li ng-click="$site.navigateTo('users')">Users</li>
+                <li ng-click="$site.navigateTo('headers')">Headers</li>
+              </ul>
+            </nav>
+          </div>
+          <div class="row__cell row__cell--fixed">
+            <div class="my-account">
+              <div class="my-account-dropdown">{{ accountName }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="notification" ng-class="{'open': isNotificationDisplayed === true, 'closed': isNotificationDisplayed === false}" ng-click="hideNotification()">
+    <div class="notification__text">
+      {{ notificationMessage }}
+    </div>
+  </div>
+
+  <div ng-show="signinFormIsDisplayed" class="dialog-box-shadow"></div>
+  <div ng-show="signinFormIsDisplayed" class="dialog-box">
+    <h1>Sign in</h1>
+    <div>Your session has expired. You need to sign back in to continue</div>
+    <form onsubmit="return false;">
+      <div class="breathe">
+        <input type="text" ng-model="username" placeholder="username/email" />
+      </div>
+      <div class="breathe">
+        <input type="password" ng-model="password" placeholder="password" />
+      </div>
+      <div class="breathe text-right">
+        <input type="submit" ng-click="signin()" value="Sign in"/>
+        <button class="cancel" ng-click="cancelSignin()">Cancel</button>
+      </div>
+      <div ng-show="errorMessage != ''" class="error">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+
+  <sign-up-form ng-show="signupFormIsDisplayed"></sign-up-form>
+
+</div>

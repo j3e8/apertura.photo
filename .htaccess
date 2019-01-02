@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# rule for API requests
+RewriteRule ^api/([a-zA-z0-9_]+)/([a-zA-z0-9_]+)(\?(.*))?$ server/server.php?namespace=api&class=$1&method=$2&$4 [QSA]
+
+# rules for app
+#Redirect 301 /app/ /app/home 
+RewriteRule ^app/$ server/server.php?namespace=app&page=home [END]
+RewriteRule ^app/assets/([a-zA-Z\.0-9_\-\/]+)$ client/app/assets/$1 [END]
+RewriteRule ^app/bundle\.([a-z]+)$ client/app/bundle.$1 [END]
+RewriteRule ^app/components/([a-zA-Z\.0-9_\-\/]+)$ client/app/components/$1 [END]
+RewriteRule ^(app/)?([0-9]+)/([0-9]+)/([0-9]+)\.[a-z0-9]+(/([0-9]+))?(/noredirect=(true|false))?$ server/server.php?namespace=api&class=Photo&method=output_photo&userId=$2&randomFolder=$3&photoFileId=$4&size=$6&noredirect=$8 [END]
+RewriteRule ^app/([a-z0-9\-_]+)$ server/server.php?namespace=app&page=$1 [END]
+
+# rules for admin area
+RewriteRule ^admin/?$ server/server.php?namespace=admin&page=home [END]
+RewriteRule ^admin/assets/([a-zA-Z\.0-9_\-\/]+)$ client/admin/assets/$1 [END]
+RewriteRule ^admin/bundle\.([a-z]+)$ client/admin/bundle.$1 [END]
+RewriteRule ^admin/components/([a-zA-Z\.0-9_\-\/]+)$ client/admin/components/$1 [END]
+RewriteRule ^admin/([a-z0-9\-_\/]+)$ server/server.php?namespace=admin&page=$1 [END]
+
+# main site rules
+RewriteRule ^$ server/server.php?namespace=main&page=index [END]
+RewriteRule ^assets/([a-zA-Z\.0-9_\-\/]+)$ client/main/assets/$1 [END]
+RewriteRule ^bundle\.([a-z]+)$ client/main/bundle.$1 [END]
+RewriteRule ^components/([a-zA-Z\.0-9_\-\/]+)$ client/main/components/$1 [END]
+RewriteRule ^files/([a-zA-Z\.0-9_\-]+)$ server/server.php?namespace=main&filename=$1 [END]
+RewriteRule ^([a-z0-9\-_]+)$ server/server.php?namespace=main&page=$1 [END]

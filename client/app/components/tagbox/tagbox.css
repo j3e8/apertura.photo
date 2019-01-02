@@ -1,0 +1,36 @@
+div.tag-suggestions {
+  position: absolute;
+  top: 100%;
+  left: -0;
+  max-height: 250px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  overflow-y: scroll;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  background-color: rgba(255,255,255,0.85);
+  z-index: 1;
+}
+div.tag-suggestions.all {
+  top: 40px;
+  padding-top: 10px;
+}
+
+div.tag-suggestion {
+  white-space: nowrap;
+  padding: 8px 10px;
+  border-bottom: 1px solid #a0a0a0;
+  cursor: pointer;
+  text-align: left;
+  color: #595050;
+}
+div.tag-suggestion:hover {
+  background-color: #f2f2f2;
+}
+div.tag-suggestion.highlighted {
+  background-color: #f2e385;
+}

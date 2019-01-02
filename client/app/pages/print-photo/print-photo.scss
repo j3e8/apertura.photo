@@ -1,0 +1,40 @@
+body.print-photo-page {
+  margin: 0;
+  padding: 0;
+
+#img-container {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+img {
+  position: absolute;
+}
+
+#size-chooser,
+#instructions {
+  margin-top: 30px;
+  padding: 20px;
+  max-width: 600px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  text-align: center;
+  margin: 30px auto 0 auto;
+}
+
+@media print {
+  #img-container {
+    margin: 0;
+  }
+
+  #size-chooser {
+    display: none;
+  }
+
+  #instructions {
+    display: none;
+  }
+}
+
+}

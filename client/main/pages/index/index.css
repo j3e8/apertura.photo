@@ -1,0 +1,230 @@
+html {
+  height: 100%;
+}
+
+body.index-page {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  @media screen and (max-width: 800px) {
+    min-height: 100%;
+    overflow: auto;
+  }
+
+  main {
+    position: relative;
+    height: calc(100% - 90px);
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    background: none;
+  }
+  @media screen and (max-width: 800px) {
+    main {
+      overflow: auto;
+    }
+  }
+  div#scroll-thumb-element {
+    position: absolute;
+    width: 12px;
+    height: 25px;
+    border-radius: 6px;
+    background-color: #3bb8af;
+    right: 2px;
+    top: 1px;
+    z-index: 100;
+  }
+  @media screen and (max-width: 800px) {
+    div#scroll-thumb-element {
+      display: none;
+    }
+  }
+
+  div#scroll-down {
+    display: block;
+    position: absolute;
+    bottom: -140px;
+    right: 15px;
+    width: 144px;
+    height: 140px;
+    background-image: url(assets/images/bottom-flag.png);
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 60px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #fff;
+    font-size: 20px;
+    animation: flag-slide-up 1s 2s 1 ease;
+    -webkit-animation: flag-slide-up 1s 2s 1 ease;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  @media screen and (max-width: 800px) {
+    div#scroll-down {
+      display: none;
+    }
+  }
+
+  @keyframes flag-slide-up {
+    from { bottom: -140px; }
+    to { bottom: 0; }
+  }
+
+  @-webkit-keyframes flag-slide-up {
+    from { bottom: -140px; }
+    to { bottom: 0; }
+  }
+
+  .pulse {
+    animation: pulse-animation 1s infinite;
+    animation-direction: alternate;
+    -webkit-animation: pulse-animation 1s infinite;
+    -webkit-animation-direction: alternate;
+  }
+
+  @keyframes pulse-animation {
+    from { opacity: 1; }
+    to { opacity: 0.05; }
+  }
+
+  @-webkit-keyframes pulse-animation {
+    from { opacity: 1; }
+    to { opacity: 0.05; }
+  }
+
+  section.frame {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
+  section.frame.offscreen {
+    top: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    section.frame {
+      position: relative;
+    }
+    section.frame.offscreen {
+      top: 0;
+    }
+  }
+
+  section#scene1 {
+    background-image: url(assets/images/home/scene1.jpg);
+  }
+  section#scene2 {
+    background-image: url(assets/images/home/scene2.jpg);
+  }
+  section#scene3 {
+    background-image: url(assets/images/home/scene3.jpg);
+  }
+  section#scene4 {
+    background-image: url(assets/images/home/scene4.jpg);
+  }
+  section#scene5 {
+    background-image: url(assets/images/home/scene5.jpg);
+    background-position: center center;
+  }
+  section#scene6 {
+    background-image: url(assets/images/home/scene6.jpg);
+  }
+  section#scene7 {
+    /*background-image: url(assets/images/home/scene7.jpg);*/
+  }
+
+  div.text-block {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    font-size: 50px;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px #595050;
+  }
+  div.text-block .gray {
+    text-shadow: 1px 1px 3px #fff;
+  }
+  @media screen and (max-width: 800px) {
+    div.text-block {
+      font-size: 36px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    div.text-block {
+      font-size: 24px;
+    }
+  }
+
+  .pennant {
+    width: 1050px;
+    min-height: 200px;
+    position: absolute;
+    background-position: left top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/home/pennant.png);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 35px;
+  }
+  @media screen and (max-width: 800px) {
+    .pennant {
+      display: none;
+    }
+  }
+
+
+  .pennant div.text-block {
+    position: relative;
+    width: 800px;
+    text-shadow: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    #scene1 .text-block,
+    #scene3 .text-block {
+      top: 70%;
+      left: 2%;
+      width: 96%;
+    }
+    #scene2 div.mobile.text-block {
+      top: 80%;
+      left: 2%;
+      width: 96%;
+    }
+    #scene4 .text-block,
+    #scene5 .text-block {
+      top: 2%;
+      left: 2%;
+      width: 96%;
+      text-align: left;
+    }
+    #scene6 .text-block {
+      top: 55%;
+      left: 2%;
+      width: 96%;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    video {
+      width: 600px;
+      margin-left: -200px;
+    }
+  }
+}

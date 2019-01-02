@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta keywords="photo backup,photo storage,photo cloud,organize photos,store photos,share photos,preserve photos" />
+    <meta description="Automatically store and organize your photos from all your devices so you can view them on any device." />
+    <title>Apertura: Store and organize your photos</title>
+      <!-- BEGIN standard dependencies -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+      <script type="text/javascript" src="bundle.js"></script>
+      <link type="text/css" rel="stylesheet" href="bundle.css" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+      <link rel="manifest" href="assets/images/favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-78679351-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- END standard dependencies -->
+  </head>
+  <body ng-app="apertura" ng-controller="howItWorksPage" class="how-it-works-page">
+    <page-header></page-header>
+    <main>
+
+      <h1>How it works</h1>
+
+      <section class="step" id="step1">
+        <div class="row row--vertical-center row--wrap-1024">
+          <div class="row__cell step-image" id="step1-image"></div>
+          <div class="row__cell step-text green-bg">
+            <div id="step1-text" class="text-block white">
+              <div><span class="yellow">Take photos</span> with your camera or phone</div>
+              <div class="text-details">
+                Apertura supports photos taken with any device including most RAW camera files.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lead-into-next-step rtl"></div>
+      </section>
+
+      <section class="step" id="step2">
+        <div class="row row--vertical-center row--wrap-1024">
+          <div class="row__cell light-pink-bg">
+            <div id="step2-text" class="text-block white">
+              <div><span class="gray">Apertura</span> finds new photos on your devices, syncs and <span class="gray">organizes them</span></div>
+              <div class="text-details">
+                Download Apertura on your phones, tablets and computers. Whenever the app detects new photos it will automatically upload them to your account and organize them by the date they were taken. You can add your own tags to add more organization and make them searchable.
+              </div>
+            </div>
+          </div>
+          <div class="row__cell row__cell--fixed60" id="step2-image"></div>
+        </div>
+        <div class="lead-into-next-step ltr"></div>
+      </section>
+
+      <section class="step" id="step3">
+        <div class="row row--vertical-center row--wrap-1024">
+          <div class="row__cell row__cell--fixed60" id="step3-image"></div>
+          <div class="row__cell yellow-bg">
+            <div id="step3-text" class="text-block gray">
+              <div><span class="pink">Find photos quickly</span> on any device wherever you are</div>
+              <div class="text-details">
+                Use the Apertura app or website to quickly scroll through photos you’ve taken each year, month and day. It’s easy to find photos of holidays and events and more on any device so you can share memories with friends and family or start a photo project.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lead-into-next-step rtl"></div>
+      </section>
+
+      <section class="step" style="position: relative;">
+        <video id="video" width="100%" height="auto" loop onClick="this.play()">
+          <source src="assets/videos/iphone3.mp4" type="video/mp4">
+        </video>
+        <div class="video-text-block">
+          <div>
+            <span class="jumbo white">Ready to get started?</span>
+          </div>
+          <div class="breathe"><a href="/signup" class="button jumbo" style="background-color: #f2e385; color: #595050;">Sign up</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2016 Apertura. All rights reserved.
+    </footer>
+  </body>
+</html>

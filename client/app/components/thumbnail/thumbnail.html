@@ -1,0 +1,53 @@
+<div class="thumbnail" ng-class="{'checked': photo.selected}">
+  <div class="thumbnail-checkbox" ng-class="{'checked': photo.selected}" ng-click="togglePhotoSelection(photo)"></div>
+  <div class="thumbnail-img text-center">
+    <img src="assets/images/no-image.png" lazy-img-src="{{ photo.filename }}/600?{{ photo.lastModified }}" class="clickable" ng-click="openLightBox(photo)" />
+    <div class="image-tag-form" ng-show="photo.displayTagForm">
+      <tag-box photos="[photo]" on-key-down="handleKeyDownOnTagInput" on-key-up="handleKeyUpOnTagInput" on-key-press="handleKeyPressOnTagInput"></tag-box>
+    </div>
+    <div class="photo-tag-list" ng-show="photo.allTagsAreDisplayed">
+      <div class="row row--vertical-center tag-list-header">
+        <div class="row__cell">
+          <h4>Tags</h4>
+        </div>
+        <div class="row__cell row__cell--fixed text-right">
+          <span class="icon-close clickable" ng-click="toggleTagList(photo)"></span>
+        </div>
+      </div>
+      <ul>
+        <li ng-repeat="tag in photo.tags">
+          <div class="row row--spaced">
+            <div class="row__cell text-left">{{ tag.tagName }}</div>
+            <div class="row__cell row__cell--fixed text-right"><span class="icon-delete clickable" ng-click="removeTagFromPhoto(tag, photo)"></span></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="thumbnail-info" ng-hide="allowEditing">
+    <div class="row row--spaced">
+      <div class="row__cell">
+        <div class="filename">{{ photo.originalFilename }}</div>
+      </div>
+      <div class="row__cell text-right">
+        <a ng-href="{{ photo.filename }}" download="{{ photo.originalFilename }}" class="gray" style="text-decoration: none;">
+          <span class="icon icon-download gray"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="thumbnail-info" ng-show="allowEditing">
+    <div class="filename">{{ photo.originalFilename }}</div>
+    <div class="row row--spaced">
+      <div class="row__cell tag">
+        Tags: <span class="clickable" ng-click="toggleTagList(photo)">{{ stringifyTags(photo) }}</span>
+      </div>
+      <div class="row__cell tag row__cell--fixed">
+        <span class="icon-tag clickable" ng-click="showAddTagDialog(photo)"></span>
+      </div>
+    </div>
+  </div>
+  <div class="green-bg white" ng-show="photo.myPhotoFileId != null">
+    You have this photo
+  </div>
+</div>

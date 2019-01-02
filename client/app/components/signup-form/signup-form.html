@@ -1,0 +1,29 @@
+  <div class="dialog-box-shadow" ng-show="signupFormIsDisplayed"></div>
+  <div class="dialog-box" ng-show="signupFormIsDisplayed">
+    <h1>Sign up</h1>
+    <div>
+      Start your free one month trial of Apertura without a credit card. If you like it, it's only 99&cent; per month to start backing up and organizing all your photos from all your devices.
+    </div>
+    <form onsubmit="return false;">
+      <div class="breathe">
+        <label>Email</label>
+        <input type="email" name="email" ng-model="email" maxlength="100" ng-class="{'available':emailIsAvailable,'unavailable':emailIsAvailable===false,'invalid':emailIsValid===false}" placeholder="my@email.com" autofocus required ng-keypress="catchEnter($event)" ng-blur="checkEmailAvailability()" />
+      </div>
+      <div class="breathe">
+        <label>Username <i>(optional)</i></label>
+        <input type="text" name="username" maxlength="20" ng-model="username" ng-class="{'available':usernameIsAvailable,'unavailable':usernameIsAvailable===false,'invalid':usernameIsValid===false}" placeholder="jonesFam" ng-keypress="catchEnter($event)" ng-blur="checkUsernameAvailability()" />
+      </div>
+      <div class="breathe">
+        <label>Password</label>
+        <input type="password" name="password" ng-model="password" ng-class="{'invalid':passwordIsValid===false}" required ng-keypress="catchEnter($event)" />
+      </div>
+      <div class="breathe text-right">
+        <input type="submit" ng-click="validatePersonalInfo()" value="Sign up" ng-hide="isSubmitting" />
+        <button class="cancel" ng-click="cancelSignup()" ng-hide="isSubmitting">Cancel</button>
+        <wait-indicator ng-show="isSubmitting"></wait-indicator>
+      </div>
+      <div ng-show="errorMessage != ''" class="error">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>

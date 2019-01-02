@@ -1,0 +1,100 @@
+<div>
+  <div ng-hide="photo == undefined" class="light-box-shadow" ng-click="closeLightBox()"></div>
+
+  <div ng-hide="photo == undefined || swipeReadyPhotos[0].photo == undefined" class="light-box-image" style="left: -100%;" id="light-box-a" ng-click="closeLightBox()" style="text-align: center;" ng-touchstart="touchStart($event)" ng-touchmove="touchMove($event)" ng-touchend="touchEnd($event)">
+    <div class="light-box-image-valign">
+      <span>
+        <span>
+          <img src="" id="light-box-image-a" /><!--ng-src="{{ swipeReadyPhotos[0].photo.filename }}/1920" />-->
+        </span>
+      </span>
+    </div>
+  </div>
+  <div ng-hide="photo == undefined || swipeReadyPhotos[1].photo == undefined" class="light-box-image" id="light-box-b" ng-click="closeLightBox()" style="text-align: center;" ng-touchstart="touchStart($event)" ng-touchmove="touchMove($event)" ng-touchend="touchEnd($event)">
+    <div class="light-box-image-valign">
+      <span>
+        <span>
+          <img src="" id="light-box-image-b" /><!-- ng-src="{{ swipeReadyPhotos[1].photo.filename }}/1920" />-->
+        </span>
+      </span>
+    </div>
+  </div>
+  <div ng-hide="photo == undefined || swipeReadyPhotos[2].photo == undefined" class="light-box-image" style="left: 100%;" id="light-box-c" ng-click="closeLightBox()" style="text-align: center;" ng-touchstart="touchStart($event)" ng-touchmove="touchMove($event)" ng-touchend="touchEnd($event)">
+    <div class="light-box-image-valign">
+      <span>
+        <span>
+          <img src="" id="light-box-image-c" /><!--ng-src="{{ swipeReadyPhotos[2].photo.filename }}/1920" />-->
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <div ng-show="isRotatingPhoto" class="please-wait-shadow">
+    <div class="text-center please-wait-message">
+      <div class="text-lg">Rotating photo...</div>
+      <div class="breathe">
+        <wait-indicator></wait-indicator>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="actionsMenuIsDisplayed" class="actions-menu-shadow" ng-click="toggleActionsMenu()"></div>
+  <div ng-hide="photo == undefined" class="light-box-controls">
+    <div class="row row--vertical-center">
+      <div class="row__cell row__cell--fixed text-left">
+        <div class="light-box-controls-icon" ng-click="toggleActionsMenu()"><span class="icon-menu"></span></div>
+        <ul class="lightbox-actions-menu" ng-show="actionsMenuIsDisplayed">
+          <li ng-show="allowPrint" class="clickable">
+            <a ng-href="print-photo?pfid={{ photo.id }}" target="print_photo" ng-click="toggleActionsMenu()">
+              <span class="icon icon-print"></span> Print
+            </a>
+          </li>
+          <li ng-show="allowDownload" class="clickable">
+            <a ng-href="{{ photo.filename }}" download="{{ photo.originalFilename }}">
+              <span class="icon icon-download"></span> Download
+            </a>
+          </li>
+          <li ng-show="allowEditing" class="clickable" ng-click="rotatePhoto(90)">
+            <span class="icon icon-arrow-back"></span> Rotate 90&deg; counter-clockwise
+          </li>
+          <li ng-show="allowEditing" class="clickable" ng-click="rotatePhoto(270)">
+            <span class="icon icon-arrow-forward"></span> Rotate 90&deg; clockwise
+          </li>
+          <li ng-show="allowEditing" class="clickable" ng-click="rotatePhoto(180)">
+            <span class="icon icon-arrow-180"></span> Rotate 180&deg;
+          </li>
+          <li ng-show="allowEditing" class="clickable" ng-click="toggleDeletePhotoDialog($event);">
+            <span class="icon icon-delete clickable"></span> Delete
+          </li>
+        </ul>
+      </div>
+      <div class="row__cell text-center">
+        <div class="fine-print">{{ photo.originalFilename }}</div>
+        <div ng-show="lightboxDate">
+          <a href="browse-by-month?date={{ lightboxDate | date:'yyyy-MM-dd' }}">{{ lightboxDate | date:'MMMM' }}</a>
+          <a href="browse-by-day?date={{ lightboxDate | date:'yyyy-MM-dd' }}">{{ lightboxDate | date:'dd' }}</a>,
+          <a href="browse-by-year?year={{ lightboxDate | date:'yyyy' }}">{{ lightboxDate | date:'yyyy' }}</a>
+        </div>
+      </div>
+      <div class="row__cell row__cell--fixed text-right">
+        <div class="light-box-controls-icon" ng-click="closeLightBox();"><span class="icon-close"></span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div ng-show="deletePhotoDialogIsDisplayed" class="dialog-box-shadow" ng-click="toggleDeletePhotoDialog();"></div>
+  <div ng-show="deletePhotoDialogIsDisplayed" class="dialog-box">
+    <h1>Are you sure?</h1>
+    <div class="breathe">Are you sure you want to delete this photo forever?  We'll keep track of it and make sure it's never uploaded again.</div>
+    <div class="breathe text-center">
+      <div class="delete-image-thumbnail">
+        <img ng-src="{{ photo.filename ? photo.filename+'/600' : '' }}" />
+      </div>
+    </div>
+    <div class="dialog-box-buttons">
+      <button ng-click="toggleDeletePhotoDialog(); $event.stopPropagation();" class="cancel">Cancel</button>
+      <button ng-click="deleteLightboxPhoto(); $event.stopPropagation();">Yes, I'm sure</button>
+    </div>
+  </div>
+</div>

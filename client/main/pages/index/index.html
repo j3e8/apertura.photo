@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta keywords="photo backup,photo storage,photo cloud,organize photos,store photos,share photos,preserve photos" />
+    <meta description="Automatically store and organize your photos from all your devices so you can view them on any device." />
+    <title>Apertura: Store and organize your photos</title>
+      <!-- BEGIN standard dependencies -->
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+      <script type="text/javascript" src="bundle.js"></script>
+      <link type="text/css" rel="stylesheet" href="bundle.css" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+      <link rel="manifest" href="assets/images/favicon/manifest.json">
+      <meta name="msapplication-TileColor" content="#ffffff">
+      <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+      <meta name="theme-color" content="#ffffff">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-78679351-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <!-- END standard dependencies -->
+  </head>
+  <body ng-app="apertura" onMouseWheel="onMouseWheel(event, document.getElementById('scroll-thumb-element'))" onMouseMove="dragScrollThumb(event, document.getElementById('scroll-thumb-element'))" onMouseUp="releaseScrollThumb(event)" class="index-page">
+    <page-header></page-header>
+
+    <main>
+
+      <div id="scroll-thumb-element" onMouseUp="releaseScrollThumb(event)" onMouseDown="grabScrollThumb(event, this)" onMouseMove="dragScrollThumb(event, this)"></div>
+
+      <section id="scene1" class="frame" keyframes="0{blur(15,200)}">
+        <div class="text-block white" keyframes="0{moveTo(5%, 10%)}">You take photos so you can<br class="desktop"/> <span class="yellow">save your memories</span></div>
+        <div id="scroll-down">
+          <div class="text-center">scroll down</div>
+          <div class="text-center breathe"><img class="pulse" src="assets/images/down-carat.png" style="width: 46px;" /></div>
+        </div>
+      </section>
+
+      <section id="scene2" class="frame offscreen" keyframes="0{moveTo(0,100%) moveTo(0,0,200)} 800{blur(15,200)}">
+        <div class="pennant" keyframes="0{moveTo(-100%,55%)} 200{moveTo(0,55%,100)}">
+          <div class="text-block relative">And then they get buried</div>
+          <div id="test" class="text-block relative pink" keyframes="0{hide()} 300{fadeIn(40)} 370{fadeOut(30)}">at the bottom of your camera roll</div>
+          <div class="text-block relative pink" keyframes="0{hide()} 400{fadeIn(40)} 470{fadeOut(30)}">in the middle of a scrapbook</div>
+          <div class="text-block relative pink" keyframes="0{hide()} 500{fadeIn(40)} 570{fadeOut(30)}">on an SD card</div>
+          <div class="text-block relative pink" keyframes="0{hide()} 600{fadeIn(40)} 670{fadeOut(30)}">on an external hard drive</div>
+          <div class="text-block relative pink" keyframes="0{hide()} 700{fadeIn(40)}">in some cloud storage backup</div>
+        </div>
+        <div class="mobile text-block white">And then they get buried</div>
+      </section>
+
+      <section id="scene3" class="frame offscreen" keyframes="0{moveTo(0,100%)} 800{moveTo(0,0,200)} 1300{blur(15,200)}">
+        <div class="text-block white" style="transform-origin: 0 50%;" keyframes="0{moveTo(5%, 75%) hide()} 1000{fadeIn(40)} 1100{scale(1.3,1.3,300)}">You need all your photos in one place<br class="desktop" /><span class="pink">wherever you are</span></div>
+      </section>
+
+      <section id="scene4" class="frame offscreen" keyframes="0{moveTo(0,100%)} 1300{moveTo(0,0,200)} 1800{blur(15,200)}">
+        <div class="text-block white text-center" style="transform-origin: 50% 50%;" keyframes="0{moveTo(5%, 5%) hide()} 1500{fadeIn(40)} 1600{scale(1.3,1.3,300)}"><span class="green">Download Apertura</span><br/>on each of your devices</div>
+      </section>
+
+      <section id="scene5" class="frame offscreen" keyframes="0{moveTo(0,100%)} 1800{moveTo(0,0,200)} 2300{blur(15,200)}">
+        <div class="text-block white text-center" style="transform-origin: 50% 50%;" keyframes="0{moveTo(5%, 5%) hide()} 2000{fadeIn(40)} 2100{scale(1.3,1.3,300)}">We'll <span class="pink">automatically</span> sync all your photos<br class="desktop"/> to Apertura and keep them <span class="pink">organized</span></div>
+      </section>
+
+      <section id="scene6" class="frame offscreen" keyframes="0{moveTo(0,100%)} 2300{moveTo(0,0,200)} 2800{blur(15,200)}">
+        <div class="text-block white text-right" style="transform-origin: 100% 50%;" keyframes="0{moveTo(5%, 10%) hide()} 2500{fadeIn(40)} 2600{scale(1.3,1.3,300)}">Use your smart phone, tablet or <br class="desktop"/> computer to find photos quickly, <br class="desktop"/>or just to <span class="pink">take a trip down <br class="desktop"/>memory lane</span></div>
+      </section>
+
+      <section id="scene7" class="frame offscreen" keyframes="0{moveTo(0,100%)} 2800{moveTo(0,0,200)}">
+        <video id="video" width="100%" height="auto" loop onClick="this.play()" autoplay>
+          <source src="assets/videos/iphone3.mp4" type="video/mp4">
+        </video>
+        <div class="text-block white" keyframes="0{moveTo(5%, 10%) hide()} 3000{fadeIn(40)}">
+          <span class="yellow">Do something</span> with your photos<br class="desktop" />Get Apertura today
+          <div class="breathe" keyframes="0{hide()} 3040{fadeIn(40)}"><a href="signup" class="button jumbo" style="background-color: #f2e385; color: #595050;">Sign up</a></div>
+        </div>
+      </section>
+
+      <div style="position: fixed; bottom: 0; left: 0; width: auto; padding: 10px 15px; background-color: #595050;">
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+          <form action="//photo.us13.list-manage.com/subscribe/post?u=6301b87d7a36e58d030b656d4&amp;id=fe6f017bf9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+              <div class="row row--spaced row--vertical-center">
+                <div class="row__cell row__cell--fixed white desktop">
+                  Sign up for our newsletter
+                </div>
+                <div class="row__cell row__cell--fixed">
+                  <div class="mc-field-group">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="my@email.com">
+                  </div>
+                  <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                  </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6301b87d7a36e58d030b656d4_fe6f017bf9" tabindex="-1" value=""></div>
+                </div>
+                <div class="row__cell row__cell--fixed">
+                  <div class="clear"><input type="submit" value="Sign up" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--End mc_embed_signup-->
+      </div>
+
+    </main>
+  </body>
+</html>

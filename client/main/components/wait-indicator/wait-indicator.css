@@ -1,0 +1,16 @@
+div.wait-indicator {
+  display: inline-block;
+  animation: spin 1s linear;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  width: 25px;
+  height: 25px;
+}
+div.wait-indicator img {
+  width: 25px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
